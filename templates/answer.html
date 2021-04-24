@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 align='center'>Примеры:</h1>
+<div>
+    <form class="login_form" method="post">
+        <div class="form-group">
+            {% for res in result %}
+            <label>№{{ loop.index }} - {{res["pr"][0]}}<sub>{{res["pr"][1]}}</sub>=
+                {{res["ans_user"]}}<sub>{{res["pr"][2]}}</sub>&nbsp; &nbsp;</label>
+            <label>{{res["verdict"]}}</label>
+            <hr>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Посмотреть верные ответы</button>
+        <form action="/trening">
+            <input type="button" class="btn btn-primary" onclick="window.location.href='/trening';"
+                   value="Повторить ввод ответов"/>
+        </form>
+    </form>
+</div>
+{% endblock %}

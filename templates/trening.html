@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 align='center'>Решите примеры:</h1>
+<div>
+    <form class="login_form" method="post">
+        <div class="form-group">
+            {% for key, num_dict in pr_dict.items() %}
+            <label>№{{ loop.index }} - Переведи число&nbsp;&nbsp;{{num_dict["number"]}}<sub>
+                {{num_dict["notation_inp"]}}</sub> в систему счисления с основанием -
+                {{num_dict["notation_out"]}}.</label>
+            <p><input name="{{loop.index-1}}:{{key}}"></p>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">Готово</button>
+    </form>
+</div>
+{% endblock %}
